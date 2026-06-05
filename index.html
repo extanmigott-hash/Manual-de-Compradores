@@ -3,163 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual de Compradores · Procurement Regional Shipping</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Portal de Consulta de Proyectos — Procurement Regional Shipping</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900;1000&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --yellow: #FFE600;
+    --yellow-hover: #F0D800;
     --black: #1A1A1A;
+    --gray-dark: #2D2D2D;
     --gray-mid: #6B6B6B;
-    --gray-light: #F5F5F5;
+    --gray-light: #F4F4F4;
     --white: #FFFFFF;
-    --border: #E8E8E8;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
   html { scroll-behavior: smooth; }
+
   body {
     font-family: 'Nunito Sans', sans-serif;
-    background: var(--gray-light);
+    background: var(--white);
     color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-  }
-
-  /* ── HEADER ── */
-  header { background: var(--black); flex-shrink: 0; }
-  .header-top {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    padding: 0 32px 0 0;
-    min-height: 64px;
-  }
-  .header-left { display: flex; align-items: center; flex: 1; }
-  .header-bar { width: 5px; background: var(--yellow); align-self: stretch; margin-right: 18px; flex-shrink: 0; }
-  .header-texts { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 12px 0; }
-  .header-org { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 15px; color: var(--white); }
-  .header-dept { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 10px; color: var(--yellow); text-transform: uppercase; letter-spacing: 2px; }
-  .header-logo { display: flex; align-items: center; gap: 8px; margin-left: 28px; padding: 0 20px; border-left: 1px solid rgba(255,255,255,0.12); }
-  .header-logo-icon { font-size: 22px; }
-  .header-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
-  .header-logo-text span:first-child { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; color: var(--white); }
-  .header-logo-text span:last-child  { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; color: var(--yellow); }
-  .header-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-  .header-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-size: 26px; border: 3px solid rgba(255,230,0,0.35); }
-  .header-banner { background: var(--yellow); padding: 7px 32px; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--black); }
-
-  /* ── HERO SEARCH ── */
-  .hero-search {
-    background: var(--black);
-    padding: 40px 32px 48px;
-    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 10%;
     position: relative;
     overflow: hidden;
   }
-  .hero-search::before {
+
+  .hero::before {
     content: '';
     position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
+    top: -120px; right: -120px;
+    width: 600px; height: 600px;
     background: var(--yellow);
     border-radius: 50%;
-    opacity: 0.05;
-    pointer-events: none;
+    opacity: 0.06;
   }
-  .hero-search::after {
+
+  .hero::after {
     content: '';
     position: absolute;
-    bottom: -40px; left: 10%;
-    width: 200px; height: 200px;
+    bottom: -80px; left: 30%;
+    width: 400px; height: 400px;
     background: var(--yellow);
     border-radius: 50%;
     opacity: 0.04;
-    pointer-events: none;
   }
-  .hero-search h1 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: clamp(22px, 4vw, 34px);
-    color: var(--white);
-    margin-bottom: 8px;
-    position: relative;
-  }
-  .hero-search h1 span { color: var(--yellow); }
-  .hero-search p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 28px;
-    position: relative;
-  }
-  .search-box {
-    display: flex;
-    max-width: 620px;
-    margin: 0 auto;
-    background: var(--white);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    position: relative;
-  }
-  .search-box input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 16px 20px;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 15px;
-    color: var(--black);
-    background: transparent;
-  }
-  .search-box button {
-    background: var(--yellow);
-    border: none;
-    padding: 0 24px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 14px;
-    color: var(--black);
-    cursor: pointer;
-    transition: background .2s;
-    white-space: nowrap;
-  }
-  .search-box button:hover { background: #F0D800; }
 
-  /* chips de sugerencias */
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
     gap: 8px;
-    max-width: 680px;
-    margin: 16px auto 0;
-    position: relative;
-  }
-  .chip {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.75);
-    font-size: 12px;
-    font-weight: 600;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     padding: 6px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all .2s;
-  }
-  .chip:hover { background: var(--yellow); color: var(--black); border-color: var(--yellow); font-weight: 700; }
-
-  /* ── MAIN CONTENT ── */
-  .main {
-    flex: 1;
-    max-width: 900px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 32px 24px 48px;
+    border-radius: 4px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
   }
 
-  /* SECTION CARDS (pantalla inicial) */
-  .section-label {
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--black);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 1.05;
+    color: var(--white);
+    max-width: 720px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .hero h1 span {
+    color: var(--yellow);
+  }
+
+  .hero p {
+    font-size: clamp(16px, 2vw, 20px);
+    color: rgba(255,255,255,0.65);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+
+  .hero-scroll {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 1s;
+  }
+
+  .hero-scroll svg {
+    animation: bounce 1.5s ease infinite;
+  }
+
+  .hero-logo {
+    position: absolute;
+    top: 40px; right: 10%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeDown 0.7s ease forwards 0.3s;
+  }
+
+  .hero-logo-ml {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ml-circle {
+    display: flex; align-items: center; justify-content: center;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .ml-text {
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1.2;
+  }
+
+  .ml-text span {
+    display: block;
+    color: var(--yellow);
     font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 100px 10%;
+  }
+
+  .section-tag {
+    font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -169,556 +183,1083 @@
     align-items: center;
     gap: 10px;
   }
-  .section-label::before { content: ''; width: 20px; height: 2px; background: var(--yellow); display: inline-block; border-radius: 2px; }
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 14px;
-    margin-bottom: 32px;
+
+  .section-tag::before {
+    content: '';
+    width: 24px; height: 3px;
+    background: var(--yellow);
+    display: inline-block;
+    border-radius: 2px;
   }
-  .section-card {
-    background: var(--white);
-    border: 2px solid var(--border);
-    border-radius: 14px;
-    padding: 22px 18px;
-    cursor: pointer;
-    transition: all .2s;
+
+  .section-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+
+  .section-title span {
+    color: var(--gray-mid);
+  }
+
+  .section-sub {
+    font-size: 17px;
+    color: var(--gray-mid);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* ── WHAT IS IT ── */
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 64px;
+  }
+
+  .what-visual {
+    background: var(--black);
+    border-radius: 20px;
+    padding: 48px 40px;
     position: relative;
     overflow: hidden;
   }
-  .section-card::after {
+
+  .what-visual::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: var(--yellow);
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+
+  .what-visual-icon {
+    font-size: 52px;
+    margin-bottom: 24px;
+  }
+
+  .what-visual h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .what-visual p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  .what-visual-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  .what-points {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .what-point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .what-point-num {
+    width: 40px; height: 40px;
+    background: var(--yellow);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  .what-point-body strong {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+
+  .what-point-body p {
+    font-size: 14px;
+    color: var(--gray-mid);
+    line-height: 1.6;
+  }
+
+  /* ── EMAIL SECTION ── */
+  .email-section {
+    background: var(--gray-light);
+  }
+
+  .email-mockup {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.10);
+    overflow: hidden;
+    max-width: 680px;
+    margin: 64px auto 0;
+    border: 1px solid #E8E8E8;
+  }
+
+  .email-topbar {
+    background: #F0F0F0;
+    padding: 12px 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .email-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+  }
+
+  .email-dot:nth-child(1) { background: #FF5F57; }
+  .email-dot:nth-child(2) { background: #FEBC2E; }
+  .email-dot:nth-child(3) { background: #28C840; }
+
+  .email-topbar-label {
+    margin-left: 12px;
+    font-size: 12px;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .email-header-img {
+    background: var(--black);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 4px solid var(--yellow);
+  }
+
+  .email-header-img .ml-badge {
+    background: var(--yellow);
+    border-radius: 50%;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .email-header-text {
+    color: var(--white);
+  }
+
+  .email-header-text strong {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--white);
+  }
+
+  .email-header-text span {
+    font-size: 12px;
+    color: var(--yellow);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .email-body {
+    padding: 32px;
+  }
+
+  .email-subject {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+
+  .email-subject strong { color: var(--black); }
+
+  .email-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+
+  .email-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .email-btn {
+    display: inline-block;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 24px;
+  }
+
+  .email-note {
+    font-size: 12px;
+    color: #AAA;
+    line-height: 1.6;
+    border-top: 1px solid #F0F0F0;
+    padding-top: 16px;
+  }
+
+  /* ── HOW TO READ ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .step-card {
+    border: 2px solid #EBEBEB;
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .step-card::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 3px;
+    height: 4px;
     background: var(--yellow);
     transform: scaleX(0);
-    transition: transform .25s ease;
+    transition: transform 0.3s ease;
     transform-origin: left;
   }
-  .section-card:hover { border-color: var(--yellow); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-  .section-card:hover::after { transform: scaleX(1); }
-  .card-icon { font-size: 28px; margin-bottom: 10px; }
-  .card-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; color: var(--black); margin-bottom: 4px; }
-  .card-sub { font-size: 12px; color: var(--gray-mid); line-height: 1.5; }
 
-  /* RESULTADO */
-  #results { display: none; }
-
-  .result-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  .step-card:hover {
+    border-color: var(--yellow);
+    transform: translateY(-4px);
   }
-  .result-query {
+
+  .step-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .step-num {
     font-family: 'Nunito', sans-serif;
     font-weight: 900;
-    font-size: 18px;
-    color: var(--black);
+    font-size: 48px;
+    color: #F0F0F0;
+    line-height: 1;
+    margin-bottom: 12px;
   }
-  .result-query span {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--gray-mid);
-    margin-bottom: 2px;
-  }
-  .back-btn {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    color: var(--black);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 8px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all .2s;
-    white-space: nowrap;
-  }
-  .back-btn:hover { background: var(--yellow); border-color: var(--yellow); }
 
-  .answer-card {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 16px;
-    padding: 24px 28px;
+  .step-icon {
+    font-size: 28px;
     margin-bottom: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   }
-  .answer-tag {
+
+  .step-card strong {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+
+  .step-card p {
+    font-size: 14px;
+    color: var(--gray-mid);
+    line-height: 1.6;
+  }
+
+  /* ── FAQ ── */
+  .faq-section {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .faq-section .section-tag {
+    color: rgba(255,255,255,0.4);
+  }
+
+  .faq-section .section-tag::before {
+    background: var(--yellow);
+  }
+
+  .faq-section .section-title {
+    color: var(--white);
+  }
+
+  .faq-section .section-title span {
+    color: var(--yellow);
+  }
+
+  .faq-section .section-sub {
+    color: rgba(255,255,255,0.55);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 64px;
+  }
+
+  .faq-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 28px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .faq-item:hover {
+    background: rgba(255,230,0,0.06);
+    border-color: rgba(255,230,0,0.25);
+  }
+
+  .faq-q {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--yellow);
+    margin-bottom: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .faq-q::before {
+    content: '?';
+    width: 24px; height: 24px;
+    background: rgba(255,230,0,0.15);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    padding-left: 34px;
+  }
+
+  /* ── CONTACT CTA ── */
+  .cta-section {
+    text-align: center;
+    padding: 100px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: var(--yellow);
+    border-radius: 50%;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .cta-section .section-tag {
+    justify-content: center;
+  }
+
+  .cta-section .section-title {
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+
+  .cta-section .section-sub {
+    max-width: 500px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+
+  .cta-highlight {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 12px;
     background: var(--yellow);
     color: var(--black);
     font-family: 'Nunito', sans-serif;
-    font-size: 10px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    padding: 3px 10px;
-    border-radius: 4px;
-    margin-bottom: 14px;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 10px;
   }
-  .answer-card p { font-size: 14px; color: var(--black); line-height: 1.75; margin-bottom: 8px; }
-  .answer-card ul, .answer-card ol { padding-left: 20px; margin: 8px 0; }
-  .answer-card li { font-size: 14px; color: var(--black); line-height: 1.7; margin-bottom: 5px; }
 
-  .no-result-card {
-    background: var(--white);
-    border: 1.5px dashed var(--border);
-    border-radius: 16px;
-    padding: 32px;
-    text-align: center;
+  .cta-highlight .cta-icon {
+    font-size: 20px;
   }
-  .no-result-card p { font-size: 14px; color: var(--gray-mid); margin-bottom: 16px; }
 
-  /* reusar los mismos helpers de estilo */
-  .code-val { font-family: monospace; background: #F0F0F0; padding: 2px 7px; border-radius: 4px; font-size: 12px; }
-  .status-chip { display: inline-block; border-radius: 5px; padding: 2px 10px; font-family: monospace; font-size: 12px; font-weight: 700; margin: 2px 3px; }
-  .chip-blue    { background: #dbeafe; color: #1e40af; }
-  .chip-green   { background: #dcfce7; color: #166534; }
-  .chip-red     { background: #fee2e2; color: #991b1b; }
-  .chip-purple  { background: #eef2ff; color: #4338ca; }
-  .chip-teal    { background: #ecfeff; color: #0e7490; }
-  .chip-emerald { background: #ecfdf5; color: #047857; }
-  .chip-amber   { background: #fffbeb; color: #b45309; }
-  .col-badge { display: inline-block; background: var(--black); color: var(--yellow); font-family: monospace; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
-  .info-box { background: #fffbe6; border: 1px solid #FFE600; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #78350f; margin-top: 10px; line-height: 1.6; }
-  .warn-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #9a3412; margin-top: 10px; line-height: 1.6; }
-
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer {
     background: var(--black);
-    border-top: 3px solid var(--yellow);
-    padding: 18px 32px;
+    padding: 36px 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: 3px solid var(--yellow);
   }
-  .footer-left { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: var(--white); }
-  .footer-left span { color: var(--yellow); }
-  .footer-right { font-size: 11px; color: rgba(255,255,255,0.3); }
 
-  @media (max-width: 600px) {
-    .header-logo { display: none; }
-    .cards-grid { grid-template-columns: 1fr 1fr; }
-    .main { padding: 20px 16px 40px; }
+  .footer-left {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--white);
+  }
+
+  .footer-left span {
+    color: var(--yellow);
+  }
+
+  .footer-right {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .what-grid { grid-template-columns: 1fr; gap: 40px; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
   }
 </style>
-</head>
+<script>(function(){function _ok(r,onOk){return r.json().then(function(b){if(!r.ok)throw b;onOk(b);return b;});}window.GRID=window.GRID||{};window.GRID.docId="01KSGFQ40FF9BQXY4XNE3YRK2Q";window.GRID._stateUpdatedAt='';window.GRID._stateUpdatedAtByName=window.GRID._stateUpdatedAtByName||{};window.GRID.states={get:function(name){var n=String(name||'').trim();if(!n)return Promise.reject({error:'validation_error',detail:'state name is required'});return fetch('/api/v1/documents/'+"01KSGFQ40FF9BQXY4XNE3YRK2Q"+'/states/'+encodeURIComponent(n)).then(function(r){return _ok(r,function(b){window.GRID._stateUpdatedAtByName[n]=b.updated_at||'';});});},set:function(name,data,ifUpdatedAt){var n=String(name||'').trim();if(!n)return Promise.reject({error:'validation_error',detail:'state name is required'});return fetch('/api/v1/documents/'+"01KSGFQ40FF9BQXY4XNE3YRK2Q"+'/states/'+encodeURIComponent(n),{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({state:data,if_updated_at:(typeof ifUpdatedAt==='string'?ifUpdatedAt:(window.GRID._stateUpdatedAtByName[n]||''))})}).then(function(r){return _ok(r,function(b){window.GRID._stateUpdatedAtByName[n]=b.updated_at||'';});});},patch:function(name,patchData,ifUpdatedAt){var n=String(name||'').trim();if(!n)return Promise.reject({error:'validation_error',detail:'state name is required'});return fetch('/api/v1/documents/'+"01KSGFQ40FF9BQXY4XNE3YRK2Q"+'/states/'+encodeURIComponent(n),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({patch:patchData,if_updated_at:(typeof ifUpdatedAt==='string'?ifUpdatedAt:(window.GRID._stateUpdatedAtByName[n]||''))})}).then(function(r){return _ok(r,function(b){window.GRID._stateUpdatedAtByName[n]=b.updated_at||'';});});}};window.GRID.state={get:function(){return fetch('/api/v1/documents/'+"01KSGFQ40FF9BQXY4XNE3YRK2Q"+'/state').then(function(r){return _ok(r,function(b){window.GRID._stateUpdatedAt=b.updated_at||'';});});},set:function(data,ifUpdatedAt){return fetch('/api/v1/documents/'+"01KSGFQ40FF9BQXY4XNE3YRK2Q"+'/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({state:data,if_updated_at:(typeof ifUpdatedAt==='string'?ifUpdatedAt:(window.GRID._stateUpdatedAt||''))})}).then(function(r){return _ok(r,function(b){window.GRID._stateUpdatedAt=b.updated_at||'';});});},patch:function(patchData,ifUpdatedAt){return fetch('/api/v1/documents/'+"01KSGFQ40FF9BQXY4XNE3YRK2Q"+'/state',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({patch:patchData,if_updated_at:(typeof ifUpdatedAt==='string'?ifUpdatedAt:(window.GRID._stateUpdatedAt||''))})}).then(function(r){return _ok(r,function(b){window.GRID._stateUpdatedAt=b.updated_at||'';});});}};}());</script></head>
 <body>
 
-<!-- ── HEADER ── -->
-<header>
-  <div class="header-top">
-    <div class="header-left">
-      <div class="header-bar"></div>
-      <div class="header-texts">
-        <div class="header-org">Procurement Regional Shipping</div>
-        <div class="header-dept">Gestión de Proyectos</div>
+<!-- ═══ HERO ═══ -->
+<section class="hero" style="padding-bottom:60px;">
+  <div class="hero-logo">
+    <div class="hero-logo-ml">
+      <div class="ml-circle">
+        <img src="data:image/png;base64,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" alt="Mercado Libre" style="height:36px;width:auto;display:block;" />
       </div>
-      <div class="header-logo">
-        <div class="header-logo-icon">🤝</div>
-        <div class="header-logo-text">
-          <span>mercado</span>
-          <span>libre</span>
-        </div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="header-avatar">📖</div>
+      <div class="ml-text"><span>Procurement</span>Regional Shipping</div>
     </div>
   </div>
-  <div class="header-banner">Manual de Compradores</div>
-</header>
-
-<!-- ── HERO SEARCH ── -->
-<div class="hero-search">
-  <h1>¿En qué podemos <span>ayudarte?</span></h1>
-  <p>Consulta cualquier tema del manual de compradores del Dashboard de Proyectos.</p>
-  <div class="search-box">
-    <input type="text" id="input" placeholder="Escribe tu pregunta aquí..." onkeydown="if(event.key==='Enter') send()" />
-    <button onclick="send()">Buscar →</button>
+  <div class="hero-badge">Manual interno · Compradores</div>
+  <h1>Manual del<br><span>Dashboard</span><br>de Proyectos.</h1>
+  <p>Guía de referencia para el equipo de Procurement Regional Shipping. Todo lo que necesitan saber para mantener los datos actualizados y generar el dashboard correctamente.</p>
+  <div class="hero-scroll">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8 3v10M8 13l-4-4M8 13l4-4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    Ver el manual
   </div>
-  <div class="chips">
-    <div class="chip" onclick="ask('¿Cómo genero y envío el dashboard?')">¿Cómo envío el dashboard?</div>
-    <div class="chip" onclick="ask('Valores válidos para el Status')">Status válidos</div>
-    <div class="chip" onclick="ask('Categorías válidas columna O')">Categorías</div>
-    <div class="chip" onclick="ask('Columnas obligatorias')">Columnas obligatorias</div>
-    <div class="chip" onclick="ask('El menú Dashboard no aparece en Sheets')">Menú no aparece</div>
-    <div class="chip" onclick="ask('Un proyecto no aparece en el dashboard')">Proyecto no aparece</div>
-    <div class="chip" onclick="ask('Cómo agrego destinatarios al email')">Agregar destinatarios</div>
-    <div class="chip" onclick="ask('Resumen rápido cheat sheet')">Cheat sheet</div>
+</section>
+
+
+<!-- ═══ ÍNDICE ═══ -->
+<section>
+  <div class="section-tag reveal">Contenido</div>
+  <h2 class="section-title reveal">¿Qué hay<br><span>en este manual?</span></h2>
+  <div class="steps-grid" style="grid-template-columns:repeat(2,1fr);margin-top:32px;">
+    <div class="step-card reveal" style="cursor:pointer;" onclick="document.getElementById('sec-flujo').scrollIntoView({behavior:'smooth'})">
+      <div class="step-num">01</div>
+      <div class="step-icon">🔄</div>
+      <strong>El flujo completo</strong>
+      <p>De principio a fin: cómo se conectan el Sheet, el script y el email que reciben los clientes.</p>
+    </div>
+    <div class="step-card reveal" style="cursor:pointer;" onclick="document.getElementById('sec-sheet').scrollIntoView({behavior:'smooth'})">
+      <div class="step-num">02</div>
+      <div class="step-icon">📊</div>
+      <strong>Reglas del Sheet</strong>
+      <p>Columnas obligatorias, valores válidos para Status, categorías y cómo afectan al dashboard.</p>
+    </div>
+    <div class="step-card reveal" style="cursor:pointer;" onclick="document.getElementById('sec-envio').scrollIntoView({behavior:'smooth'})">
+      <div class="step-num">03</div>
+      <div class="step-icon">📧</div>
+      <strong>Generar y enviar el dashboard</strong>
+      <p>Paso a paso: cómo usar el menú en Sheets para generar el HTML y mandarlo por email.</p>
+    </div>
+    <div class="step-card reveal" style="cursor:pointer;" onclick="document.getElementById('sec-errores').scrollIntoView({behavior:'smooth'})">
+      <div class="step-num">04</div>
+      <div class="step-icon">⚠️</div>
+      <strong>Errores frecuentes</strong>
+      <p>Los problemas más comunes y cómo resolverlos sin necesidad de soporte técnico.</p>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ── MAIN ── -->
-<div class="main">
 
-  <!-- PANTALLA INICIAL -->
-  <div id="home">
-    <div class="section-label">Secciones del manual</div>
-    <div class="cards-grid">
-      <div class="section-card" onclick="ask('Explicame el flujo completo del sistema')">
-        <div class="card-icon">🔄</div>
-        <div class="card-title">Flujo completo</div>
-        <div class="card-sub">De principio a fin: Sheet → script → email.</div>
+<!-- ═══ 01 · FLUJO COMPLETO ═══ -->
+<section id="sec-flujo" style="background:var(--surface);border-radius:24px;padding:56px 40px;">
+  <div class="section-tag reveal">01 · Flujo completo</div>
+  <h2 class="section-title reveal">Cómo funciona<br><span>todo el sistema.</span></h2>
+  <p class="section-sub reveal">El dashboard no se genera solo — requiere que los datos estén bien cargados en el Sheet y que el comprador ejecute el script cuando haya novedades para compartir.</p>
+
+  <!-- Diagrama de flujo -->
+  <div class="reveal" style="margin:40px 0;">
+    <div style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;">
+
+      <!-- Paso 1 -->
+      <div style="flex:1;min-width:160px;background:#fff;border-radius:12px;padding:24px 20px;text-align:center;border:2px solid #e5e7eb;position:relative;">
+        <div style="font-size:32px;margin-bottom:10px;">📋</div>
+        <div style="font-size:11px;font-weight:700;color:#FFE600;background:#1a1a1a;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:.5px;">PASO 1</div>
+        <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:6px;">Cargar datos en el Sheet</div>
+        <div style="font-size:12px;color:#6b7280;line-height:1.6;">El comprador completa o actualiza los proyectos en Google Sheets con todos los campos requeridos.</div>
       </div>
-      <div class="section-card" onclick="ask('Reglas del Sheet, valores de Status y Categoría')">
-        <div class="card-icon">📊</div>
-        <div class="card-title">Reglas del Sheet</div>
-        <div class="card-sub">Status, categorías y columnas obligatorias.</div>
+
+      <div style="display:flex;align-items:center;padding:0 8px;font-size:24px;color:#FFE600;font-weight:700;">→</div>
+
+      <!-- Paso 2 -->
+      <div style="flex:1;min-width:160px;background:#fff;border-radius:12px;padding:24px 20px;text-align:center;border:2px solid #e5e7eb;">
+        <div style="font-size:32px;margin-bottom:10px;">⚙️</div>
+        <div style="font-size:11px;font-weight:700;color:#FFE600;background:#1a1a1a;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:.5px;">PASO 2</div>
+        <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:6px;">Ejecutar el script</div>
+        <div style="font-size:12px;color:#6b7280;line-height:1.6;">Desde el menú <strong>📊 Dashboard</strong> en Sheets, hacer clic en <em>"Generar y enviar Dashboard"</em>.</div>
       </div>
-      <div class="section-card" onclick="ask('Pasos para generar y enviar el dashboard')">
-        <div class="card-icon">📧</div>
-        <div class="card-title">Generar y enviar</div>
-        <div class="card-sub">Paso a paso para enviar el dashboard.</div>
+
+      <div style="display:flex;align-items:center;padding:0 8px;font-size:24px;color:#FFE600;font-weight:700;">→</div>
+
+      <!-- Paso 3 -->
+      <div style="flex:1;min-width:160px;background:#fff;border-radius:12px;padding:24px 20px;text-align:center;border:2px solid #e5e7eb;">
+        <div style="font-size:32px;margin-bottom:10px;">🔧</div>
+        <div style="font-size:11px;font-weight:700;color:#FFE600;background:#1a1a1a;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:.5px;">PASO 3</div>
+        <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:6px;">El script genera el HTML</div>
+        <div style="font-size:12px;color:#6b7280;line-height:1.6;">El script lee los datos del Sheet en ese momento y genera el dashboard disponible en el link.</div>
       </div>
-      <div class="section-card" onclick="ask('Errores frecuentes y cómo resolverlos')">
-        <div class="card-icon">⚠️</div>
-        <div class="card-title">Errores frecuentes</div>
-        <div class="card-sub">Problemas comunes y sus soluciones.</div>
+
+      <div style="display:flex;align-items:center;padding:0 8px;font-size:24px;color:#FFE600;font-weight:700;">→</div>
+
+      <!-- Paso 4 -->
+      <div style="flex:1;min-width:160px;background:#fff;border-radius:12px;padding:24px 20px;text-align:center;border:2px solid #e5e7eb;">
+        <div style="font-size:32px;margin-bottom:10px;">📧</div>
+        <div style="font-size:11px;font-weight:700;color:#FFE600;background:#1a1a1a;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:.5px;">PASO 4</div>
+        <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:6px;">Email enviado</div>
+        <div style="font-size:12px;color:#6b7280;line-height:1.6;">El email llega a todos los destinatarios de la lista con el link al dashboard en línea y un resumen de KPIs.</div>
       </div>
-      <div class="section-card" onclick="ask('Resumen rápido cheat sheet')">
-        <div class="card-icon">⚡</div>
-        <div class="card-title">Cheat sheet</div>
-        <div class="card-sub">Referencia rápida para el día a día.</div>
-      </div>
-      <div class="section-card" onclick="ask('Cómo agrego destinatarios al email')">
-        <div class="card-icon">👥</div>
-        <div class="card-title">Destinatarios</div>
-        <div class="card-sub">Cómo gestionar la lista de envío.</div>
-      </div>
+
     </div>
   </div>
 
-  <!-- RESULTADOS -->
-  <div id="results">
-    <div class="result-header">
-      <div class="result-query">
-        <span>Resultado para:</span>
-        <span id="query-text"></span>
-      </div>
-      <button class="back-btn" onclick="showHome()">← Volver al inicio</button>
+  <!-- Nota importante -->
+  <div class="reveal" style="background:#fffbe6;border:1px solid #FFE600;border-radius:12px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;">
+    <div style="font-size:24px;flex-shrink:0;">💡</div>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#78350f;margin-bottom:6px;">El dashboard siempre está actualizado</div>
+      <div style="font-size:13px;color:#92400e;line-height:1.7;">El link del email apunta a un dashboard en línea que <strong>siempre refleja el estado actual del Sheet</strong>. Cada vez que alguien abre el link, ve los datos más recientes — no hay versiones desactualizadas. no verán esos cambios — será necesario generar y enviar un nuevo dashboard.</div>
     </div>
-    <div id="answers"></div>
+  </div>
+</section>
+
+
+<!-- ═══ 02 · REGLAS DEL SHEET ═══ -->
+<section id="sec-sheet">
+  <div class="section-tag reveal">02 · Reglas del Sheet</div>
+  <h2 class="section-title reveal">Cómo completar<br><span>los datos correctamente.</span></h2>
+  <p class="section-sub reveal">El dashboard lee directamente el Sheet. Si los datos no están bien ingresados, el proyecto puede no aparecer o aparecer en la categoría incorrecta.</p>
+
+  <!-- Columna Status -->
+  <div class="reveal" style="margin-bottom:32px;">
+    <h3 style="font-size:16px;font-weight:700;color:#111;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+      <span style="background:#1a1a1a;color:#FFE600;padding:4px 12px;border-radius:6px;font-size:12px;">Columna M</span>
+      Status — valores válidos
+    </h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div style="background:#dbeafe;border:1px solid #93c5fd;border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">🔄</div>
+        <div style="font-size:13px;font-weight:700;color:#1e40af;margin-bottom:4px;">en proceso</div>
+        <div style="font-size:11px;color:#3b82f6;">Aparece en el dashboard principal. Debe escribirse exactamente así, en minúsculas.</div>
+      </div>
+      <div style="background:#dcfce7;border:1px solid #86efac;border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">✅</div>
+        <div style="font-size:13px;font-weight:700;color:#166534;margin-bottom:4px;">concluido</div>
+        <div style="font-size:11px;color:#16a34a;">Aparece en la pestaña Concluidos. Debe escribirse exactamente así, en minúsculas.</div>
+      </div>
+      <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">❌</div>
+        <div style="font-size:13px;font-weight:700;color:#991b1b;margin-bottom:4px;">cancelado</div>
+        <div style="font-size:11px;color:#dc2626;">No aparece en ninguna vista del dashboard. Se excluye automáticamente.</div>
+      </div>
+    </div>
+    <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px 18px;margin-top:12px;display:flex;gap:10px;align-items:flex-start;">
+      <span style="font-size:16px;">⚠️</span>
+      <div style="font-size:12px;color:#374151;line-height:1.6;">El script es sensible a mayúsculas y espacios. <strong>"En Proceso"</strong> o <strong>"EN PROCESO"</strong> no serán reconocidos correctamente. Siempre usar minúsculas: <code style="background:#e5e7eb;padding:2px 6px;border-radius:4px;">en proceso</code> / <code style="background:#e5e7eb;padding:2px 6px;border-radius:4px;">concluido</code> / <code style="background:#e5e7eb;padding:2px 6px;border-radius:4px;">cancelado</code></div>
+    </div>
   </div>
 
-</div>
+  <!-- Columna Categoría -->
+  <div class="reveal" style="margin-bottom:32px;">
+    <h3 style="font-size:16px;font-weight:700;color:#111;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+      <span style="background:#1a1a1a;color:#FFE600;padding:4px 12px;border-radius:6px;font-size:12px;">Columna O</span>
+      Categoría — valores válidos
+    </h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;">
+      <div style="background:#eef2ff;border-left:4px solid #6366f1;border-radius:8px;padding:12px 16px;">
+        <div style="font-size:12px;font-weight:700;color:#4338ca;">⚙️ AUTOMATION</div>
+      </div>
+      <div style="background:#ecfeff;border-left:4px solid #0891b2;border-radius:8px;padding:12px 16px;">
+        <div style="font-size:12px;font-weight:700;color:#0e7490;">🔧 MECHANIZATION</div>
+      </div>
+      <div style="background:#ecfdf5;border-left:4px solid #059669;border-radius:8px;padding:12px 16px;">
+        <div style="font-size:12px;font-weight:700;color:#047857;">🏭 WAREHOUSE SYSTEM</div>
+      </div>
+      <div style="background:#f5f3ff;border-left:4px solid #7c3aed;border-radius:8px;padding:12px 16px;">
+        <div style="font-size:12px;font-weight:700;color:#6d28d9;">🤖 ROBOTICS</div>
+      </div>
+      <div style="background:#fffbeb;border-left:4px solid #d97706;border-radius:8px;padding:12px 16px;">
+        <div style="font-size:12px;font-weight:700;color:#b45309;">🚜 FORKLIFT</div>
+      </div>
+      <div style="background:#fffbeb;border-left:4px solid #d97706;border-radius:8px;padding:12px 16px;">
+        <div style="font-size:12px;font-weight:700;color:#b45309;">🚜 MHE MAINTENANCE</div>
+        <div style="font-size:10px;color:#d97706;margin-top:2px;">→ se muestra como Forklift</div>
+      </div>
+    </div>
+    <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px 18px;display:flex;gap:10px;align-items:flex-start;">
+      <span style="font-size:16px;">⚠️</span>
+      <div style="font-size:12px;color:#374151;line-height:1.6;">El texto debe coincidir exactamente (mayúsculas incluidas). Si la categoría no coincide con ninguna de las anteriores, el proyecto aparecerá en <strong>"OTROS"</strong> y puede no verse correctamente en el dashboard.</div>
+    </div>
+  </div>
 
-<!-- ── FOOTER ── -->
+  <!-- Columnas clave -->
+  <div class="reveal">
+    <h3 style="font-size:16px;font-weight:700;color:#111;margin-bottom:16px;">Columnas clave y su efecto en el dashboard</h3>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="background:#1a1a1a;">
+            <th style="padding:12px 16px;text-align:left;color:#FFE600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;">Columna</th>
+            <th style="padding:12px 16px;text-align:left;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.5px;">Nombre</th>
+            <th style="padding:12px 16px;text-align:left;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.5px;">Dónde aparece</th>
+            <th style="padding:12px 16px;text-align:left;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.5px;">Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fff;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">A</td>
+            <td style="padding:12px 16px;font-weight:600;">Nombre</td>
+            <td style="padding:12px 16px;color:#6b7280;">Tabla principal · Pestaña Concluidos · Popup</td>
+            <td style="padding:12px 16px;color:#6b7280;">Obligatorio. Es el nombre visible del proyecto.</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">B</td>
+            <td style="padding:12px 16px;font-weight:600;">JOB (código)</td>
+            <td style="padding:12px 16px;color:#6b7280;">Tabla principal · Concluidos · Popup</td>
+            <td style="padding:12px 16px;color:#6b7280;">Obligatorio. Sin código, el proyecto no aparece.</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fff;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">C</td>
+            <td style="padding:12px 16px;font-weight:600;">Detalle</td>
+            <td style="padding:12px 16px;color:#6b7280;">Tabla · Concluidos · Popup</td>
+            <td style="padding:12px 16px;color:#6b7280;">Descripción del proyecto. Recomendado completar.</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">M</td>
+            <td style="padding:12px 16px;font-weight:600;">Status</td>
+            <td style="padding:12px 16px;color:#6b7280;">Filtra qué vista muestra el proyecto</td>
+            <td style="padding:12px 16px;color:#6b7280;"><strong>Crítico.</strong> Solo: <code style="background:#e5e7eb;padding:1px 5px;border-radius:3px;">en proceso</code> / <code style="background:#e5e7eb;padding:1px 5px;border-radius:3px;">concluido</code> / <code style="background:#e5e7eb;padding:1px 5px;border-radius:3px;">cancelado</code></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fff;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">N</td>
+            <td style="padding:12px 16px;font-weight:600;">Subcategoría</td>
+            <td style="padding:12px 16px;color:#6b7280;">Popup · Concluidos</td>
+            <td style="padding:12px 16px;color:#6b7280;">Visible en el detalle del proyecto.</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">O</td>
+            <td style="padding:12px 16px;font-weight:600;">Categoría</td>
+            <td style="padding:12px 16px;color:#6b7280;">Sidebar · Separación del dashboard</td>
+            <td style="padding:12px 16px;color:#6b7280;"><strong>Crítico.</strong> Define en qué sección aparece el proyecto.</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fff;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">P</td>
+            <td style="padding:12px 16px;font-weight:600;">Familia</td>
+            <td style="padding:12px 16px;color:#6b7280;">Popup · Concluidos</td>
+            <td style="padding:12px 16px;color:#6b7280;">Visible en el detalle y en la pestaña Concluidos.</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">AA</td>
+            <td style="padding:12px 16px;font-weight:600;">Saving USD</td>
+            <td style="padding:12px 16px;color:#6b7280;">KPIs del email · Tabla · Popup</td>
+            <td style="padding:12px 16px;color:#6b7280;">Valor numérico. Aparece en el resumen del email.</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fff;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">AK</td>
+            <td style="padding:12px 16px;font-weight:600;">Proveedores premiados</td>
+            <td style="padding:12px 16px;color:#6b7280;">Popup · Concluidos</td>
+            <td style="padding:12px 16px;color:#6b7280;">Separar múltiples proveedores con <code style="background:#e5e7eb;padding:1px 5px;border-radius:3px;">|</code>. Ej: <em>Proveedor A | Proveedor B</em></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">AM</td>
+            <td style="padding:12px 16px;font-weight:600;">País</td>
+            <td style="padding:12px 16px;color:#6b7280;">Tabla · Concluidos · Popup</td>
+            <td style="padding:12px 16px;color:#6b7280;">Visible en la tabla y en el detalle.</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:12px 16px;font-weight:700;color:#6366f1;font-family:monospace;">AN</td>
+            <td style="padding:12px 16px;font-weight:600;">Status Detallado</td>
+            <td style="padding:12px 16px;color:#6b7280;">Popup (campo comentarios)</td>
+            <td style="padding:12px 16px;color:#6b7280;">Aparece como "Comentarios" en el popup del proyecto.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Columnas dinámicas -->
+    <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:20px 24px;margin-top:20px;display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-size:24px;flex-shrink:0;">✨</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#3730a3;margin-bottom:6px;">Columnas extra — se muestran automáticamente</div>
+        <div style="font-size:13px;color:#4338ca;line-height:1.7;">Si se agregan columnas nuevas al Sheet, el dashboard las detecta automáticamente y las muestra en el popup de cada proyecto bajo la sección <strong>"Información adicional"</strong>. Solo aparecen si esa fila tiene un valor — si el campo está vacío, no se muestra. No se necesita modificar ningún código para agregar columnas nuevas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ 03 · GENERAR Y ENVIAR ═══ -->
+<section id="sec-envio" style="background:var(--surface);border-radius:24px;padding:56px 40px;">
+  <div class="section-tag reveal">03 · Generar y enviar</div>
+  <h2 class="section-title reveal">Paso a paso para<br><span>enviar el dashboard.</span></h2>
+  <p class="section-sub reveal">El proceso completo toma menos de un minuto desde que se hace clic hasta que el email llega a los destinatarios.</p>
+
+  <div class="reveal" style="display:flex;flex-direction:column;gap:16px;max-width:700px;margin:32px auto 0;">
+
+    <div style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:12px;padding:20px 24px;border:1px solid #e5e7eb;">
+      <div style="width:36px;height:36px;background:#1a1a1a;color:#FFE600;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;">1</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:4px;">Abrir Google Sheets del proyecto</div>
+        <div style="font-size:13px;color:#6b7280;line-height:1.6;">Verificar que los datos estén actualizados antes de generar el dashboard. Lo que está en el Sheet en este momento es lo que verán los destinatarios.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:12px;padding:20px 24px;border:1px solid #e5e7eb;">
+      <div style="width:36px;height:36px;background:#1a1a1a;color:#FFE600;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;">2</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:4px;">Hacer clic en el menú <strong>📊 Dashboard</strong></div>
+        <div style="font-size:13px;color:#6b7280;line-height:1.6;">El menú aparece en la barra superior de Google Sheets, después de "Extensiones". Si no aparece, recargar la página — el menú se crea automáticamente al abrir el archivo.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:12px;padding:20px 24px;border:1px solid #e5e7eb;">
+      <div style="width:36px;height:36px;background:#1a1a1a;color:#FFE600;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;">3</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:4px;">Seleccionar <em>"Generar y enviar Dashboard"</em></div>
+        <div style="font-size:13px;color:#6b7280;line-height:1.6;">El script leerá el Sheet, generará el HTML y enviará el email a todos los destinatarios de la lista. Aparecerá un cuadro de confirmación al terminar con el resumen del envío.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:12px;padding:20px 24px;border:1px solid #e5e7eb;">
+      <div style="width:36px;height:36px;background:#1a1a1a;color:#FFE600;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;">4</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#111;margin-bottom:4px;">Verificar el mensaje de confirmación</div>
+        <div style="font-size:13px;color:#6b7280;line-height:1.6;">Al terminar el envío aparece un popup con: cantidad de destinatarios, proyectos incluidos, saving total y monto premiado. Si hay un error, aparecerá un mensaje explicando qué falló.</div>
+      </div>
+    </div>
+
+    <!-- Vista previa -->
+    <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-size:24px;flex-shrink:0;">👁️</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#92400e;margin-bottom:6px;">Vista previa antes de enviar</div>
+        <div style="font-size:13px;color:#78350f;line-height:1.7;">El menú también tiene la opción <strong>"Vista previa (sin enviar)"</strong>. Abre el dashboard en una ventana dentro de Sheets para revisarlo antes de mandar el email. Recomendado usarla antes de cada envío para verificar que los datos son correctos.</div>
+      </div>
+    </div>
+
+    <!-- Lista de emails -->
+    <div style="background:#ecfdf5;border:1px solid #a7f3d0;border-radius:12px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-size:24px;flex-shrink:0;">📋</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#065f46;margin-bottom:6px;">Gestionar la lista de destinatarios</div>
+        <div style="font-size:13px;color:#047857;line-height:1.7;">Los destinatarios se leen desde el Sheet de emails (archivo separado). Para agregar o quitar un destinatario, simplemente editar ese Sheet — no se necesita tocar el código. El email debe estar en la columna A, uno por fila, desde la fila 2.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ 04 · ERRORES FRECUENTES ═══ -->
+<section id="sec-errores">
+  <div class="section-tag reveal">04 · Errores frecuentes</div>
+  <h2 class="section-title reveal">Problemas comunes<br><span>y cómo resolverlos.</span></h2>
+  <p class="section-sub reveal">La mayoría de los errores tienen solución simple sin necesidad de soporte técnico.</p>
+
+  <div class="faq-grid reveal">
+
+    <div class="faq-item">
+      <div class="faq-q">❌ El menú "📊 Dashboard" no aparece en Sheets</div>
+      <p class="faq-a"><strong>Solución:</strong> Recargar la página (F5 o Ctrl+R). El menú se crea automáticamente al abrir el archivo — si la página no terminó de cargar, el menú puede no aparecer. Si persiste, cerrar y volver a abrir el archivo.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">❌ Un proyecto no aparece en el dashboard</div>
+      <p class="faq-a"><strong>Causas más comunes:</strong><br>
+      • La columna B (código JOB) está vacía — el script omite filas sin código.<br>
+      • La columna M (Status) no dice exactamente <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;">en proceso</code> — verificar mayúsculas y espacios.<br>
+      • El status dice <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;">cancelado</code> — los cancelados no aparecen en ninguna vista.<br>
+      <strong>Solución:</strong> Corregir los datos en el Sheet y generar el dashboard nuevamente.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">❌ El proyecto aparece en la categoría incorrecta</div>
+      <p class="faq-a"><strong>Causa:</strong> El valor en la columna O (Categoría) no coincide exactamente con los valores válidos.<br>
+      <strong>Solución:</strong> Verificar que sea exactamente una de estas opciones (respetando mayúsculas): <em>AUTOMATION, MECHANIZATION, WAREHOUSE SYSTEM, ROBOTICS, FORKLIFT, MHE MAINTENANCE</em>. Cualquier variación lo envía a "OTROS".</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">❌ Error al enviar: "No se encontraron emails"</div>
+      <p class="faq-a"><strong>Causa:</strong> El Sheet de emails está vacío o los emails no están en la columna A desde la fila 2.<br>
+      <strong>Solución:</strong> Abrir el Sheet de distribución y verificar que haya al menos un email válido en la columna A (fila 2 en adelante). Cada email debe tener el símbolo @.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">❌ Los proveedores no aparecen correctamente en el popup</div>
+      <p class="faq-a"><strong>Causa:</strong> La columna AK (Proveedores premiados) tiene múltiples proveedores separados con coma o punto y coma en lugar de <strong>|</strong>.<br>
+      <strong>Solución:</strong> Usar el símbolo <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;">|</code> (pipe) para separar proveedores. Ejemplo: <em>Proveedor A | Proveedor B | Proveedor C</em></p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">❌ El script pide autorización al ejecutarse por primera vez</div>
+      <p class="faq-a"><strong>Es normal.</strong> La primera vez que se ejecuta el script (o después de actualizarlo), Google Sheets pide autorizar los permisos. Hacer clic en "Revisar permisos" → seleccionar la cuenta de MercadoLibre → "Permitir". Solo sucede una vez por cuenta.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ RESUMEN RÁPIDO ═══ -->
+<section style="background:var(--surface);border-radius:24px;padding:56px 40px;">
+  <div class="section-tag reveal">Referencia rápida</div>
+  <h2 class="section-title reveal">Cheat sheet<br><span>para el día a día.</span></h2>
+
+  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;">
+
+    <div style="background:#fff;border-radius:12px;padding:22px;border:1px solid #e5e7eb;">
+      <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #FFE600;">✅ Valores válidos para Status (col. M)</div>
+      <div style="font-family:monospace;font-size:13px;line-height:2.2;">
+        <div style="background:#dbeafe;border-radius:6px;padding:4px 10px;margin-bottom:6px;color:#1e40af;">en proceso</div>
+        <div style="background:#dcfce7;border-radius:6px;padding:4px 10px;margin-bottom:6px;color:#166534;">concluido</div>
+        <div style="background:#fee2e2;border-radius:6px;padding:4px 10px;color:#991b1b;">cancelado</div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:12px;padding:22px;border:1px solid #e5e7eb;">
+      <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #FFE600;">✅ Valores válidos para Categoría (col. O)</div>
+      <div style="font-family:monospace;font-size:12px;line-height:2.2;">
+        <div style="background:#eef2ff;border-radius:6px;padding:4px 10px;margin-bottom:4px;color:#4338ca;">AUTOMATION</div>
+        <div style="background:#ecfeff;border-radius:6px;padding:4px 10px;margin-bottom:4px;color:#0e7490;">MECHANIZATION</div>
+        <div style="background:#ecfdf5;border-radius:6px;padding:4px 10px;margin-bottom:4px;color:#047857;">WAREHOUSE SYSTEM</div>
+        <div style="background:#f5f3ff;border-radius:6px;padding:4px 10px;margin-bottom:4px;color:#6d28d9;">ROBOTICS</div>
+        <div style="background:#fffbeb;border-radius:6px;padding:4px 10px;margin-bottom:4px;color:#b45309;">FORKLIFT</div>
+        <div style="background:#fffbeb;border-radius:6px;padding:4px 10px;color:#b45309;">MHE MAINTENANCE → Forklift</div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:12px;padding:22px;border:1px solid #e5e7eb;">
+      <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #FFE600;">📋 Columnas obligatorias</div>
+      <div style="font-size:13px;color:#374151;line-height:2;">
+        <div><strong style="font-family:monospace;color:#6366f1;">B</strong> — Código JOB (sin esto el proyecto no aparece)</div>
+        <div><strong style="font-family:monospace;color:#6366f1;">M</strong> — Status (define en qué vista aparece)</div>
+        <div><strong style="font-family:monospace;color:#6366f1;">O</strong> — Categoría (define la sección del dashboard)</div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:12px;padding:22px;border:1px solid #e5e7eb;">
+      <div style="font-size:13px;font-weight:700;color:#111;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #FFE600;">⚡ Menú 📊 Dashboard</div>
+      <div style="font-size:13px;color:#374151;line-height:2;">
+        <div>→ <strong>Generar y enviar Dashboard</strong> — envía a todos</div>
+        <div>→ <strong>Vista previa (sin enviar)</strong> — revisar antes</div>
+        <div style="margin-top:8px;font-size:12px;color:#9ca3af;">Si no aparece: recargar la página (F5)</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-left">Procurement <span>Regional Shipping</span> · Manual interno</div>
   <div class="footer-right">Dashboard de Proyectos · 2026</div>
 </footer>
 
+
 <script>
-// ─────────────────────────────────────────────────────────────
-//  BASE DE CONOCIMIENTO
-// ─────────────────────────────────────────────────────────────
-const KB = [
-  {
-    id: "flujo",
-    keywords: ["flujo","sistema","funciona","proceso","completo","pasos","conecta","script","overview","cómo funciona","principio","fin","general"],
-    title: "El flujo completo del sistema",
-    render: () => `
-      <div class="answer-tag">01 · Flujo completo</div>
-      <p>El dashboard <strong>no se genera solo</strong> — requiere que los datos estén bien cargados en el Sheet y que el comprador ejecute el script cuando haya novedades.</p>
-      <ol>
-        <li><strong>Paso 1 — Cargar datos en el Sheet:</strong> el comprador completa o actualiza los proyectos en Google Sheets con todos los campos requeridos.</li>
-        <li><strong>Paso 2 — Ejecutar el script:</strong> desde el menú <em>📊 Dashboard</em> en Sheets, hacer clic en "Generar y enviar Dashboard".</li>
-        <li><strong>Paso 3 — El script genera el HTML:</strong> lee los datos del Sheet en ese momento y genera el archivo <code class="code-val">Dashboard_Proyectos.html</code>.</li>
-        <li><strong>Paso 4 — Email enviado:</strong> el email llega a todos los destinatarios con el dashboard adjunto y un resumen de KPIs.</li>
-      </ol>
-      <div class="info-box">💡 <strong>Importante:</strong> el HTML generado es una <em>fotografía del estado del Sheet en el momento del envío</em>. Si se actualizan datos después, los destinatarios no verán esos cambios — será necesario generar y enviar un nuevo dashboard.</div>`
-  },
-  {
-    id: "status",
-    keywords: ["status","estado","columna m","valores","válidos","proceso","concluido","cancelado","minúsculas","mayúsculas","sensible","exactamente"],
-    title: "Valores válidos para Status (columna M)",
-    render: () => `
-      <div class="answer-tag">02 · Columna M — Status</div>
-      <p>Solo se reconocen estos tres valores, escritos <strong>exactamente en minúsculas</strong>:</p>
-      <ul>
-        <li><span class="status-chip chip-blue">en proceso</span> — aparece en el dashboard principal.</li>
-        <li><span class="status-chip chip-green">concluido</span> — aparece en la pestaña Concluidos.</li>
-        <li><span class="status-chip chip-red">cancelado</span> — no aparece en ninguna vista, se excluye automáticamente.</li>
-      </ul>
-      <div class="warn-box">⚠️ El script es sensible a mayúsculas y espacios. <strong>"En Proceso"</strong> o <strong>"EN PROCESO"</strong> no serán reconocidos. Siempre usar: <code class="code-val">en proceso</code> / <code class="code-val">concluido</code> / <code class="code-val">cancelado</code></div>`
-  },
-  {
-    id: "categoria",
-    keywords: ["categoría","categoria","columna o","automation","mechanization","warehouse","robotics","forklift","mhe","sección","otros","incorrecta","categorias"],
-    title: "Valores válidos para Categoría (columna O)",
-    render: () => `
-      <div class="answer-tag">02 · Columna O — Categoría</div>
-      <p>Define en qué sección aparece el proyecto en el dashboard. Los valores válidos son:</p>
-      <ul>
-        <li><span class="status-chip chip-purple">AUTOMATION</span></li>
-        <li><span class="status-chip chip-teal">MECHANIZATION</span></li>
-        <li><span class="status-chip chip-emerald">WAREHOUSE SYSTEM</span></li>
-        <li><span class="status-chip chip-purple">ROBOTICS</span></li>
-        <li><span class="status-chip chip-amber">FORKLIFT</span></li>
-        <li><span class="status-chip chip-amber">MHE MAINTENANCE</span> → se muestra como <em>Forklift</em></li>
-      </ul>
-      <div class="warn-box">⚠️ El texto debe coincidir exactamente (mayúsculas incluidas). Si no coincide, el proyecto aparecerá en <strong>"OTROS"</strong>.</div>`
-  },
-  {
-    id: "columnas",
-    keywords: ["columnas","obligatorias","campos","tabla","nombre","job","código","detalle","saving","proveedores","país","familia","subcategoría","subcategoria","columna a","columna b","columna c","columna p","columna aa","columna ak","columna am","columna an","status detallado","comentarios"],
-    title: "Columnas del Sheet y su efecto en el dashboard",
-    render: () => `
-      <div class="answer-tag">02 · Columnas clave</div>
-      <p><strong>Columnas obligatorias</strong> (sin ellas el proyecto no aparece correctamente):</p>
-      <ul>
-        <li><span class="col-badge">B</span> <strong>Código JOB</strong> — sin código, el proyecto no aparece.</li>
-        <li><span class="col-badge">M</span> <strong>Status</strong> — define en qué vista aparece.</li>
-        <li><span class="col-badge">O</span> <strong>Categoría</strong> — define la sección del dashboard.</li>
-      </ul>
-      <p style="margin-top:12px;"><strong>Otras columnas importantes:</strong></p>
-      <ul>
-        <li><span class="col-badge">A</span> Nombre del proyecto</li>
-        <li><span class="col-badge">C</span> Detalle / descripción</li>
-        <li><span class="col-badge">N</span> Subcategoría</li>
-        <li><span class="col-badge">P</span> Familia</li>
-        <li><span class="col-badge">AA</span> Saving USD — aparece en KPIs del email</li>
-        <li><span class="col-badge">AK</span> Proveedores premiados — separar con <code class="code-val">|</code></li>
-        <li><span class="col-badge">AM</span> País</li>
-        <li><span class="col-badge">AN</span> Status Detallado — aparece como "Comentarios" en el popup</li>
-      </ul>
-      <div class="info-box">✨ Las columnas nuevas que se agreguen se detectan automáticamente y se muestran en el popup bajo "Información adicional". No se necesita modificar el código.</div>`
-  },
-  {
-    id: "envio",
-    keywords: ["enviar","generar","envío","mandar","dashboard","paso a paso","cómo envío","cómo mando","cómo genero","ejecutar","script","email","mail","menú"],
-    title: "Cómo generar y enviar el dashboard",
-    render: () => `
-      <div class="answer-tag">03 · Generar y enviar</div>
-      <p>El proceso completo toma menos de un minuto:</p>
-      <ol>
-        <li><strong>Abrir Google Sheets</strong> y verificar que los datos estén actualizados.</li>
-        <li><strong>Clic en el menú 📊 Dashboard</strong> (barra superior, después de "Extensiones"). Si no aparece, recargar la página con F5.</li>
-        <li><strong>Seleccionar "Generar y enviar Dashboard"</strong> — el script lee el Sheet, genera el HTML y envía el email.</li>
-        <li><strong>Verificar el mensaje de confirmación</strong> — muestra destinatarios, proyectos incluidos, saving total y monto premiado.</li>
-      </ol>
-      <div class="info-box">👁️ <strong>Vista previa:</strong> usar "Vista previa (sin enviar)" para revisar el dashboard antes de mandar el email. Recomendado antes de cada envío.</div>`
-  },
-  {
-    id: "destinatarios",
-    keywords: ["destinatarios","destinatario","lista","emails","email","agregar","quitar","columna a","fila 2","distribución","agrego","añadir"],
-    title: "Gestionar la lista de destinatarios",
-    render: () => `
-      <div class="answer-tag">03 · Destinatarios</div>
-      <p>Los destinatarios se leen desde el <strong>Sheet de emails</strong> (archivo separado).</p>
-      <ul>
-        <li>Para <strong>agregar o quitar</strong> un destinatario, editar ese Sheet — no se necesita tocar el código.</li>
-        <li>El email debe estar en la <strong>columna A</strong>, uno por fila, desde la <strong>fila 2</strong>.</li>
-        <li>Cada email debe incluir el símbolo <code class="code-val">@</code>.</li>
-      </ul>`
-  },
-  {
-    id: "error-proyecto-no-aparece",
-    keywords: ["no aparece","proyecto no aparece","falta","no se ve","no muestra","no encuentro"],
-    title: "¿Por qué no aparece un proyecto?",
-    render: () => `
-      <div class="answer-tag">04 · Proyecto no aparece</div>
-      <p><strong>Causas más comunes:</strong></p>
-      <ul>
-        <li>La columna <span class="col-badge">B</span> (código JOB) está vacía — el script omite filas sin código.</li>
-        <li>La columna <span class="col-badge">M</span> no dice exactamente <code class="code-val">en proceso</code> — verificar mayúsculas y espacios.</li>
-        <li>El status dice <code class="code-val">cancelado</code> — los cancelados no aparecen en ninguna vista.</li>
-      </ul>
-      <div class="info-box">✅ <strong>Solución:</strong> corregir los datos en el Sheet y generar el dashboard nuevamente.</div>`
-  },
-  {
-    id: "error-menu",
-    keywords: ["menú no aparece","menu no aparece","no veo el menú","dashboard no aparece","extensiones","recargar","f5"],
-    title: "El menú Dashboard no aparece",
-    render: () => `
-      <div class="answer-tag">04 · Menú no aparece</div>
-      <p><strong>Solución:</strong> recargar la página con <code class="code-val">F5</code> o <code class="code-val">Ctrl+R</code>.</p>
-      <p>El menú se crea automáticamente al abrir el archivo. Si persiste, cerrar y volver a abrir el archivo.</p>`
-  },
-  {
-    id: "error-categoria-incorrecta",
-    keywords: ["categoría incorrecta","categoria incorrecta","otros","sección incorrecta","aparece en otros"],
-    title: "El proyecto aparece en la categoría incorrecta",
-    render: () => `
-      <div class="answer-tag">04 · Categoría incorrecta</div>
-      <p><strong>Causa:</strong> el valor en columna <span class="col-badge">O</span> no coincide exactamente con los valores válidos.</p>
-      <p><strong>Solución:</strong> usar exactamente una de estas opciones (mayúsculas incluidas):</p>
-      <p style="margin-top:8px;">
-        <span class="status-chip chip-purple">AUTOMATION</span>
-        <span class="status-chip chip-teal">MECHANIZATION</span>
-        <span class="status-chip chip-emerald">WAREHOUSE SYSTEM</span>
-        <span class="status-chip chip-purple">ROBOTICS</span>
-        <span class="status-chip chip-amber">FORKLIFT</span>
-        <span class="status-chip chip-amber">MHE MAINTENANCE</span>
-      </p>`
-  },
-  {
-    id: "error-emails",
-    keywords: ["no se encontraron emails","error al enviar","lista vacía","sin emails","sin destinatarios"],
-    title: "Error: No se encontraron emails",
-    render: () => `
-      <div class="answer-tag">04 · Error — sin emails</div>
-      <p><strong>Causa:</strong> el Sheet de emails está vacío o los emails no están en la columna A desde la fila 2.</p>
-      <p><strong>Solución:</strong> verificar que haya al menos un email válido en columna A (desde fila 2), con el símbolo <code class="code-val">@</code>.</p>`
-  },
-  {
-    id: "error-proveedores",
-    keywords: ["proveedores","proveedor","separar","pipe","barra","no aparecen correctamente","cómo separo","ak"],
-    title: "¿Cómo separar múltiples proveedores?",
-    render: () => `
-      <div class="answer-tag">02 · Columna AK — Proveedores</div>
-      <p>Usar el símbolo <code class="code-val">|</code> (pipe) para separar múltiples proveedores en la columna <span class="col-badge">AK</span>.</p>
-      <div class="info-box" style="font-family:monospace;">Proveedor A | Proveedor B | Proveedor C</div>
-      <div class="warn-box">⚠️ No usar coma <code class="code-val">,</code> ni punto y coma <code class="code-val">;</code> — solo el pipe <code class="code-val">|</code>.</div>`
-  },
-  {
-    id: "error-autorizacion",
-    keywords: ["autorización","autorizacion","permisos","permite","primera vez","revisar permisos","permitir"],
-    title: "El script pide autorización",
-    render: () => `
-      <div class="answer-tag">04 · Autorización</div>
-      <p><strong>Es normal.</strong> La primera vez que se ejecuta el script, Google Sheets pide autorizar los permisos.</p>
-      <ol>
-        <li>Hacer clic en <strong>"Revisar permisos"</strong>.</li>
-        <li>Seleccionar la <strong>cuenta de MercadoLibre</strong>.</li>
-        <li>Hacer clic en <strong>"Permitir"</strong>.</li>
-      </ol>
-      <p>Solo sucede una vez por cuenta.</p>`
-  },
-  {
-    id: "vista-previa",
-    keywords: ["vista previa","preview","sin enviar","revisar antes","previsualizar"],
-    title: "Vista previa del dashboard",
-    render: () => `
-      <div class="answer-tag">03 · Vista previa</div>
-      <p>El menú <strong>📊 Dashboard</strong> tiene la opción <em>"Vista previa (sin enviar)"</em>.</p>
-      <ul>
-        <li>Abre el dashboard en una ventana dentro de Sheets.</li>
-        <li>Permite revisar el contenido <strong>antes de enviar el email</strong>.</li>
-        <li>Recomendado usarla antes de cada envío.</li>
-      </ul>`
-  },
-  {
-    id: "cancelado",
-    keywords: ["cancelado","qué pasa cancelado","no aparece cancelado","excluido"],
-    title: "¿Qué pasa con los proyectos cancelados?",
-    render: () => `
-      <div class="answer-tag">02 · Status cancelado</div>
-      <p>Los proyectos con status <span class="status-chip chip-red">cancelado</span> <strong>no aparecen en ninguna vista del dashboard</strong> — ni en la principal ni en Concluidos.</p>
-      <p>Se excluyen automáticamente al generar el dashboard.</p>`
-  },
-  {
-    id: "cheatsheet",
-    keywords: ["cheat sheet","cheatsheet","resumen","referencia rápida","guía rápida","todo junto","resumen general","día a día"],
-    title: "Cheat sheet — referencia rápida",
-    render: () => `
-      <div class="answer-tag">Referencia rápida</div>
-      <p><strong>Status válidos (col. M):</strong></p>
-      <p><span class="status-chip chip-blue">en proceso</span> <span class="status-chip chip-green">concluido</span> <span class="status-chip chip-red">cancelado</span></p>
-      <p style="margin-top:12px;"><strong>Categorías válidas (col. O):</strong></p>
-      <p>
-        <span class="status-chip chip-purple">AUTOMATION</span>
-        <span class="status-chip chip-teal">MECHANIZATION</span>
-        <span class="status-chip chip-emerald">WAREHOUSE SYSTEM</span>
-        <span class="status-chip chip-purple">ROBOTICS</span>
-        <span class="status-chip chip-amber">FORKLIFT</span>
-        <span class="status-chip chip-amber">MHE MAINTENANCE</span>
-      </p>
-      <p style="margin-top:12px;"><strong>Columnas obligatorias:</strong> <span class="col-badge">B</span> JOB &nbsp; <span class="col-badge">M</span> Status &nbsp; <span class="col-badge">O</span> Categoría</p>
-      <p style="margin-top:12px;"><strong>Menú 📊 Dashboard:</strong></p>
-      <ul>
-        <li>→ <strong>Generar y enviar Dashboard</strong> — envía a todos</li>
-        <li>→ <strong>Vista previa (sin enviar)</strong> — revisar antes</li>
-        <li>Si no aparece: recargar con F5</li>
-      </ul>
-      <p style="margin-top:10px;"><strong>Proveedores múltiples (col. AK):</strong> separar con <code class="code-val">|</code></p>
-      <p style="margin-top:6px;"><strong>Destinatarios:</strong> Sheet de emails → columna A, desde fila 2.</p>`
-  }
-];
-
-// ─────────────────────────────────────────────────────────────
-//  MOTOR DE BÚSQUEDA
-// ─────────────────────────────────────────────────────────────
-function normalize(str) {
-  return str.toLowerCase()
-    .normalize("NFD").replace(/[̀-ͯ]/g, "")
-    .replace(/[¿?¡!]/g, "");
-}
-
-function search(query) {
-  const q = normalize(query);
-  const words = q.split(/\s+/).filter(w => w.length > 2);
-  let scored = KB.map(item => {
-    let score = 0;
-    const kws = item.keywords.map(normalize);
-    kws.forEach(kw => { if (q.includes(kw)) score += kw.split(" ").length * 3; });
-    words.forEach(word => { kws.forEach(kw => { if (kw.includes(word)) score += 1; }); });
-    return { item, score };
-  });
-  scored.sort((a, b) => b.score - a.score);
-  const best = scored.filter(s => s.score > 0);
-  if (!best.length) return [];
-  const threshold = best[0].score * 0.4;
-  return best.filter(s => s.score >= threshold).slice(0, 2).map(s => s.item);
-}
-
-// ─────────────────────────────────────────────────────────────
-//  UI
-// ─────────────────────────────────────────────────────────────
-function showHome() {
-  document.getElementById("home").style.display = "block";
-  document.getElementById("results").style.display = "none";
-  document.getElementById("input").value = "";
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function showResults(query, items) {
-  document.getElementById("home").style.display = "none";
-  document.getElementById("results").style.display = "block";
-  document.getElementById("query-text").textContent = query;
-  const container = document.getElementById("answers");
-
-  if (!items.length) {
-    container.innerHTML = `
-      <div class="no-result-card">
-        <p>No se encontró esa información en el manual.<br>Intenta con otros términos o explora las secciones de arriba.</p>
-        <div class="chips" style="justify-content:center;margin-top:0;">
-          <div class="chip" onclick="ask('Status válidos columna M')" style="background:#f0f0f0;color:#333;border-color:#ddd;">Status válidos</div>
-          <div class="chip" onclick="ask('Categorías válidas')" style="background:#f0f0f0;color:#333;border-color:#ddd;">Categorías</div>
-          <div class="chip" onclick="ask('Pasos para generar y enviar')" style="background:#f0f0f0;color:#333;border-color:#ddd;">Cómo enviar</div>
-          <div class="chip" onclick="ask('Errores frecuentes')" style="background:#f0f0f0;color:#333;border-color:#ddd;">Errores</div>
-        </div>
-      </div>`;
-  } else {
-    container.innerHTML = items.map(item =>
-      `<div class="answer-card">${item.render()}</div>`
-    ).join("");
-  }
-
-  document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function ask(question) {
-  document.getElementById("input").value = question;
-  send();
-}
-
-function send() {
-  const input = document.getElementById("input");
-  const query = input.value.trim();
-  if (!query) return;
-  const results = search(query);
-  showResults(query, results);
-}
-
-document.getElementById("input").focus();
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => { entry.target.classList.add('visible'); }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
 </script>
+
+<script>
+/* Grid: only allow approved Grid domains to open unsandboxed tabs */
+(function(){
+  var allowedHosts = ["figma.com", "www.figma.com", "furydocs.io", "zeroheight.com", "google.com", "docs.google.com", "meet.google.com", "grid.adminml.com", "grid-artifacts.adminml.com", "mercadolibre.atlassian.net", "mercadolibre-opsgenie.atlassian.net", "app.datadoghq.com", "grafana-service.furycloud.io", "web.furycloud.io", "nasdaq-meli.app.opsgenie.com", "meli.enterprise.slack.com"];
+  var allowedSuffixes = [".adminml.com", ".atlassian.net", ".google.com", ".furycloud.io", ".melioffice.com", ".melisystems.com"];
+  var allowedPathPrefixes = {"github.com": ["/melisource/"], "www.github.com": ["/melisource/"]};
+  function normalizeUrl(rawUrl){
+    try {
+      return new URL(String(rawUrl || ""), window.location.href);
+    } catch (_err) {
+      return null;
+    }
+  }
+  function isAllowedUrl(rawUrl){
+    var parsed = normalizeUrl(rawUrl);
+    if(!parsed) return false;
+    if(parsed.protocol === "slack:") return true;
+    if(parsed.protocol !== "https:") return false;
+    var h = (parsed.hostname || "").toLowerCase();
+    if(!h) return false;
+    if(allowedHosts.indexOf(h) !== -1) return true;
+    for(var i = 0; i < allowedSuffixes.length; i++){
+      var s = allowedSuffixes[i];
+      if(h === s.slice(1) || (h.length > s.length && h.slice(-s.length) === s)) return true;
+    }
+    var pathPrefixes = allowedPathPrefixes[h];
+    if(pathPrefixes){
+      var p = parsed.pathname || "/";
+      for(var j = 0; j < pathPrefixes.length; j++){
+        if(p.slice(0, pathPrefixes[j].length) === pathPrefixes[j]) return true;
+      }
+    }
+    return false;
+  }
+  function requestParentPopup(rawUrl){
+    var parsed = normalizeUrl(rawUrl);
+    if(!parsed || !window.parent || window.parent === window) return false;
+    try {
+      window.parent.postMessage({type: "grid-open-safe-popup", url: parsed.href}, window.location.origin);
+      return true;
+    } catch (_err) {
+      return false;
+    }
+  }
+
+  document.addEventListener("click", function(event){
+    var target = event.target;
+    var anchor = target && target.closest ? target.closest("a[href]") : null;
+    if(!anchor) return;
+    var href = anchor.getAttribute("href") || "";
+    if(!href || href.charAt(0) === "#") return;
+    var opensNewTab = anchor.target === "_blank" || event.ctrlKey || event.metaKey || event.button === 1;
+    if(!opensNewTab) return;
+    if(!isAllowedUrl(href)) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    if(requestParentPopup(href)) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }, true);
+
+  var nativeOpen = window.open;
+  window.open = function(rawUrl, target, features){
+    if(!isAllowedUrl(rawUrl)) return null;
+    if(requestParentPopup(rawUrl)) return null;
+    return nativeOpen ? nativeOpen.call(window, normalizeUrl(rawUrl).href, target, features) : null;
+  };
+})();
+</script>
+<script>
+/* Grid: sync iframe URL mutations to parent address bar */
+(function(){
+  function notifyParent(search, hash){
+    if(!window.parent || window.parent === window) return;
+    try{
+      window.parent.postMessage(
+        {type:"grid-url-sync", search:search, hash:hash},
+        window.location.origin
+      );
+    }catch(_){}
+  }
+  function parseAndNotify(url){
+    try{
+      var p = new URL(String(url), window.location.href);
+      notifyParent(p.search, p.hash);
+    }catch(_){}
+  }
+  var _push = history.pushState.bind(history);
+  var _replace = history.replaceState.bind(history);
+  history.pushState = function(state, title, url){
+    _push(state, title, url);
+    if(url != null) parseAndNotify(url);
+  };
+  history.replaceState = function(state, title, url){
+    _replace(state, title, url);
+    if(url != null) parseAndNotify(url);
+  };
+  window.addEventListener("hashchange", function(){
+    notifyParent(window.location.search, window.location.hash);
+  });
+})();
+</script>
+
 </body>
 </html>
