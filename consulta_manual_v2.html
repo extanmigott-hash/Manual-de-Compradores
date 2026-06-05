@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Compradores · Procurement Regional Shipping</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #FFE600;
+    --black: #1A1A1A;
+    --gray-mid: #6B6B6B;
+    --gray-light: #F5F5F5;
+    --white: #FFFFFF;
+    --border: #E8E8E8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--gray-light);
+    color: var(--black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header { background: var(--black); flex-shrink: 0; }
+  .header-top {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 0 32px 0 0;
+    min-height: 64px;
+  }
+  .header-left { display: flex; align-items: center; flex: 1; }
+  .header-bar { width: 5px; background: var(--yellow); align-self: stretch; margin-right: 18px; flex-shrink: 0; }
+  .header-texts { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 12px 0; }
+  .header-org { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 15px; color: var(--white); }
+  .header-dept { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 10px; color: var(--yellow); text-transform: uppercase; letter-spacing: 2px; }
+  .header-logo { display: flex; align-items: center; gap: 8px; margin-left: 28px; padding: 0 20px; border-left: 1px solid rgba(255,255,255,0.12); }
+  .header-logo-icon { font-size: 22px; }
+  .header-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .header-logo-text span:first-child { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; color: var(--white); }
+  .header-logo-text span:last-child  { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; color: var(--yellow); }
+  .header-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .header-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-size: 26px; border: 3px solid rgba(255,230,0,0.35); }
+  .header-banner { background: var(--yellow); padding: 7px 32px; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--black); }
+
+  /* ── HERO SEARCH ── */
+  .hero-search {
+    background: var(--black);
+    padding: 40px 32px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-search::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: var(--yellow);
+    border-radius: 50%;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+  .hero-search::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 10%;
+    width: 200px; height: 200px;
+    background: var(--yellow);
+    border-radius: 50%;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+  .hero-search h1 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: clamp(22px, 4vw, 34px);
+    color: var(--white);
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero-search h1 span { color: var(--yellow); }
+  .hero-search p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .search-box {
+    display: flex;
+    max-width: 620px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 16px 20px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    color: var(--black);
+    background: transparent;
+  }
+  .search-box button {
+    background: var(--yellow);
+    border: none;
+    padding: 0 24px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    color: var(--black);
+    cursor: pointer;
+    transition: background .2s;
+    white-space: nowrap;
+  }
+  .search-box button:hover { background: #F0D800; }
+
+  /* chips de sugerencias */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 680px;
+    margin: 16px auto 0;
+    position: relative;
+  }
+  .chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .chip:hover { background: var(--yellow); color: var(--black); border-color: var(--yellow); font-weight: 700; }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  /* SECTION CARDS (pantalla inicial) */
+  .section-label {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gray-mid);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before { content: ''; width: 20px; height: 2px; background: var(--yellow); display: inline-block; border-radius: 2px; }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .section-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 18px;
+    cursor: pointer;
+    transition: all .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transition: transform .25s ease;
+    transform-origin: left;
+  }
+  .section-card:hover { border-color: var(--yellow); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .section-card:hover::after { transform: scaleX(1); }
+  .card-icon { font-size: 28px; margin-bottom: 10px; }
+  .card-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; color: var(--black); margin-bottom: 4px; }
+  .card-sub { font-size: 12px; color: var(--gray-mid); line-height: 1.5; }
+
+  /* RESULTADO */
+  #results { display: none; }
+
+  .result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .result-query {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: var(--black);
+  }
+  .result-query span {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-mid);
+    margin-bottom: 2px;
+  }
+  .back-btn {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    color: var(--black);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .back-btn:hover { background: var(--yellow); border-color: var(--yellow); }
+
+  .answer-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .answer-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .answer-card p { font-size: 14px; color: var(--black); line-height: 1.75; margin-bottom: 8px; }
+  .answer-card ul, .answer-card ol { padding-left: 20px; margin: 8px 0; }
+  .answer-card li { font-size: 14px; color: var(--black); line-height: 1.7; margin-bottom: 5px; }
+
+  .no-result-card {
+    background: var(--white);
+    border: 1.5px dashed var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+  }
+  .no-result-card p { font-size: 14px; color: var(--gray-mid); margin-bottom: 16px; }
+
+  /* reusar los mismos helpers de estilo */
+  .code-val { font-family: monospace; background: #F0F0F0; padding: 2px 7px; border-radius: 4px; font-size: 12px; }
+  .status-chip { display: inline-block; border-radius: 5px; padding: 2px 10px; font-family: monospace; font-size: 12px; font-weight: 700; margin: 2px 3px; }
+  .chip-blue    { background: #dbeafe; color: #1e40af; }
+  .chip-green   { background: #dcfce7; color: #166534; }
+  .chip-red     { background: #fee2e2; color: #991b1b; }
+  .chip-purple  { background: #eef2ff; color: #4338ca; }
+  .chip-teal    { background: #ecfeff; color: #0e7490; }
+  .chip-emerald { background: #ecfdf5; color: #047857; }
+  .chip-amber   { background: #fffbeb; color: #b45309; }
+  .col-badge { display: inline-block; background: var(--black); color: var(--yellow); font-family: monospace; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+  .info-box { background: #fffbe6; border: 1px solid #FFE600; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #78350f; margin-top: 10px; line-height: 1.6; }
+  .warn-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #9a3412; margin-top: 10px; line-height: 1.6; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 3px solid var(--yellow);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-left { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: var(--white); }
+  .footer-left span { color: var(--yellow); }
+  .footer-right { font-size: 11px; color: rgba(255,255,255,0.3); }
+
+  @media (max-width: 600px) {
+    .header-logo { display: none; }
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+    .main { padding: 20px 16px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-top">
+    <div class="header-left">
+      <div class="header-bar"></div>
+      <div class="header-texts">
+        <div class="header-org">Procurement Regional Shipping</div>
+        <div class="header-dept">Gestión de Proyectos</div>
+      </div>
+      <div class="header-logo">
+        <div class="header-logo-icon">🤝</div>
+        <div class="header-logo-text">
+          <span>mercado</span>
+          <span>libre</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-avatar">📖</div>
+    </div>
+  </div>
+  <div class="header-banner">Manual de Compradores</div>
+</header>
+
+<!-- ── HERO SEARCH ── -->
+<div class="hero-search">
+  <h1>¿En qué podemos <span>ayudarte?</span></h1>
+  <p>Consulta cualquier tema del manual de compradores del Dashboard de Proyectos.</p>
+  <div class="search-box">
+    <input type="text" id="input" placeholder="Escribe tu pregunta aquí..." onkeydown="if(event.key==='Enter') send()" />
+    <button onclick="send()">Buscar →</button>
+  </div>
+  <div class="chips">
+    <div class="chip" onclick="ask('¿Cómo genero y envío el dashboard?')">¿Cómo envío el dashboard?</div>
+    <div class="chip" onclick="ask('Valores válidos para el Status')">Status válidos</div>
+    <div class="chip" onclick="ask('Categorías válidas columna O')">Categorías</div>
+    <div class="chip" onclick="ask('Columnas obligatorias')">Columnas obligatorias</div>
+    <div class="chip" onclick="ask('El menú Dashboard no aparece en Sheets')">Menú no aparece</div>
+    <div class="chip" onclick="ask('Un proyecto no aparece en el dashboard')">Proyecto no aparece</div>
+    <div class="chip" onclick="ask('Cómo agrego destinatarios al email')">Agregar destinatarios</div>
+    <div class="chip" onclick="ask('Resumen rápido cheat sheet')">Cheat sheet</div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- PANTALLA INICIAL -->
+  <div id="home">
+    <div class="section-label">Secciones del manual</div>
+    <div class="cards-grid">
+      <div class="section-card" onclick="ask('Explicame el flujo completo del sistema')">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Flujo completo</div>
+        <div class="card-sub">De principio a fin: Sheet → script → email.</div>
+      </div>
+      <div class="section-card" onclick="ask('Reglas del Sheet, valores de Status y Categoría')">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Reglas del Sheet</div>
+        <div class="card-sub">Status, categorías y columnas obligatorias.</div>
+      </div>
+      <div class="section-card" onclick="ask('Pasos para generar y enviar el dashboard')">
+        <div class="card-icon">📧</div>
+        <div class="card-title">Generar y enviar</div>
+        <div class="card-sub">Paso a paso para enviar el dashboard.</div>
+      </div>
+      <div class="section-card" onclick="ask('Errores frecuentes y cómo resolverlos')">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Errores frecuentes</div>
+        <div class="card-sub">Problemas comunes y sus soluciones.</div>
+      </div>
+      <div class="section-card" onclick="ask('Resumen rápido cheat sheet')">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Cheat sheet</div>
+        <div class="card-sub">Referencia rápida para el día a día.</div>
+      </div>
+      <div class="section-card" onclick="ask('Cómo agrego destinatarios al email')">
+        <div class="card-icon">👥</div>
+        <div class="card-title">Destinatarios</div>
+        <div class="card-sub">Cómo gestionar la lista de envío.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTADOS -->
+  <div id="results">
+    <div class="result-header">
+      <div class="result-query">
+        <span>Resultado para:</span>
+        <span id="query-text"></span>
+      </div>
+      <button class="back-btn" onclick="showHome()">← Volver al inicio</button>
+    </div>
+    <div id="answers"></div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-left">Procurement <span>Regional Shipping</span> · Manual interno</div>
+  <div class="footer-right">Dashboard de Proyectos · 2026</div>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+//  BASE DE CONOCIMIENTO
+// ─────────────────────────────────────────────────────────────
+const KB = [
+  {
+    id: "flujo",
+    keywords: ["flujo","sistema","funciona","proceso","completo","pasos","conecta","script","overview","cómo funciona","principio","fin","general"],
+    title: "El flujo completo del sistema",
+    render: () => `
+      <div class="answer-tag">01 · Flujo completo</div>
+      <p>El dashboard <strong>no se genera solo</strong> — requiere que los datos estén bien cargados en el Sheet y que el comprador ejecute el script cuando haya novedades.</p>
+      <ol>
+        <li><strong>Paso 1 — Cargar datos en el Sheet:</strong> el comprador completa o actualiza los proyectos en Google Sheets con todos los campos requeridos.</li>
+        <li><strong>Paso 2 — Ejecutar el script:</strong> desde el menú <em>📊 Dashboard</em> en Sheets, hacer clic en "Generar y enviar Dashboard".</li>
+        <li><strong>Paso 3 — El script genera el HTML:</strong> lee los datos del Sheet en ese momento y genera el archivo <code class="code-val">Dashboard_Proyectos.html</code>.</li>
+        <li><strong>Paso 4 — Email enviado:</strong> el email llega a todos los destinatarios con el dashboard adjunto y un resumen de KPIs.</li>
+      </ol>
+      <div class="info-box">💡 <strong>Importante:</strong> el HTML generado es una <em>fotografía del estado del Sheet en el momento del envío</em>. Si se actualizan datos después, los destinatarios no verán esos cambios — será necesario generar y enviar un nuevo dashboard.</div>`
+  },
+  {
+    id: "status",
+    keywords: ["status","estado","columna m","valores","válidos","proceso","concluido","cancelado","minúsculas","mayúsculas","sensible","exactamente"],
+    title: "Valores válidos para Status (columna M)",
+    render: () => `
+      <div class="answer-tag">02 · Columna M — Status</div>
+      <p>Solo se reconocen estos tres valores, escritos <strong>exactamente en minúsculas</strong>:</p>
+      <ul>
+        <li><span class="status-chip chip-blue">en proceso</span> — aparece en el dashboard principal.</li>
+        <li><span class="status-chip chip-green">concluido</span> — aparece en la pestaña Concluidos.</li>
+        <li><span class="status-chip chip-red">cancelado</span> — no aparece en ninguna vista, se excluye automáticamente.</li>
+      </ul>
+      <div class="warn-box">⚠️ El script es sensible a mayúsculas y espacios. <strong>"En Proceso"</strong> o <strong>"EN PROCESO"</strong> no serán reconocidos. Siempre usar: <code class="code-val">en proceso</code> / <code class="code-val">concluido</code> / <code class="code-val">cancelado</code></div>`
+  },
+  {
+    id: "categoria",
+    keywords: ["categoría","categoria","columna o","automation","mechanization","warehouse","robotics","forklift","mhe","sección","otros","incorrecta","categorias"],
+    title: "Valores válidos para Categoría (columna O)",
+    render: () => `
+      <div class="answer-tag">02 · Columna O — Categoría</div>
+      <p>Define en qué sección aparece el proyecto en el dashboard. Los valores válidos son:</p>
+      <ul>
+        <li><span class="status-chip chip-purple">AUTOMATION</span></li>
+        <li><span class="status-chip chip-teal">MECHANIZATION</span></li>
+        <li><span class="status-chip chip-emerald">WAREHOUSE SYSTEM</span></li>
+        <li><span class="status-chip chip-purple">ROBOTICS</span></li>
+        <li><span class="status-chip chip-amber">FORKLIFT</span></li>
+        <li><span class="status-chip chip-amber">MHE MAINTENANCE</span> → se muestra como <em>Forklift</em></li>
+      </ul>
+      <div class="warn-box">⚠️ El texto debe coincidir exactamente (mayúsculas incluidas). Si no coincide, el proyecto aparecerá en <strong>"OTROS"</strong>.</div>`
+  },
+  {
+    id: "columnas",
+    keywords: ["columnas","obligatorias","campos","tabla","nombre","job","código","detalle","saving","proveedores","país","familia","subcategoría","subcategoria","columna a","columna b","columna c","columna p","columna aa","columna ak","columna am","columna an","status detallado","comentarios"],
+    title: "Columnas del Sheet y su efecto en el dashboard",
+    render: () => `
+      <div class="answer-tag">02 · Columnas clave</div>
+      <p><strong>Columnas obligatorias</strong> (sin ellas el proyecto no aparece correctamente):</p>
+      <ul>
+        <li><span class="col-badge">B</span> <strong>Código JOB</strong> — sin código, el proyecto no aparece.</li>
+        <li><span class="col-badge">M</span> <strong>Status</strong> — define en qué vista aparece.</li>
+        <li><span class="col-badge">O</span> <strong>Categoría</strong> — define la sección del dashboard.</li>
+      </ul>
+      <p style="margin-top:12px;"><strong>Otras columnas importantes:</strong></p>
+      <ul>
+        <li><span class="col-badge">A</span> Nombre del proyecto</li>
+        <li><span class="col-badge">C</span> Detalle / descripción</li>
+        <li><span class="col-badge">N</span> Subcategoría</li>
+        <li><span class="col-badge">P</span> Familia</li>
+        <li><span class="col-badge">AA</span> Saving USD — aparece en KPIs del email</li>
+        <li><span class="col-badge">AK</span> Proveedores premiados — separar con <code class="code-val">|</code></li>
+        <li><span class="col-badge">AM</span> País</li>
+        <li><span class="col-badge">AN</span> Status Detallado — aparece como "Comentarios" en el popup</li>
+      </ul>
+      <div class="info-box">✨ Las columnas nuevas que se agreguen se detectan automáticamente y se muestran en el popup bajo "Información adicional". No se necesita modificar el código.</div>`
+  },
+  {
+    id: "envio",
+    keywords: ["enviar","generar","envío","mandar","dashboard","paso a paso","cómo envío","cómo mando","cómo genero","ejecutar","script","email","mail","menú"],
+    title: "Cómo generar y enviar el dashboard",
+    render: () => `
+      <div class="answer-tag">03 · Generar y enviar</div>
+      <p>El proceso completo toma menos de un minuto:</p>
+      <ol>
+        <li><strong>Abrir Google Sheets</strong> y verificar que los datos estén actualizados.</li>
+        <li><strong>Clic en el menú 📊 Dashboard</strong> (barra superior, después de "Extensiones"). Si no aparece, recargar la página con F5.</li>
+        <li><strong>Seleccionar "Generar y enviar Dashboard"</strong> — el script lee el Sheet, genera el HTML y envía el email.</li>
+        <li><strong>Verificar el mensaje de confirmación</strong> — muestra destinatarios, proyectos incluidos, saving total y monto premiado.</li>
+      </ol>
+      <div class="info-box">👁️ <strong>Vista previa:</strong> usar "Vista previa (sin enviar)" para revisar el dashboard antes de mandar el email. Recomendado antes de cada envío.</div>`
+  },
+  {
+    id: "destinatarios",
+    keywords: ["destinatarios","destinatario","lista","emails","email","agregar","quitar","columna a","fila 2","distribución","agrego","añadir"],
+    title: "Gestionar la lista de destinatarios",
+    render: () => `
+      <div class="answer-tag">03 · Destinatarios</div>
+      <p>Los destinatarios se leen desde el <strong>Sheet de emails</strong> (archivo separado).</p>
+      <ul>
+        <li>Para <strong>agregar o quitar</strong> un destinatario, editar ese Sheet — no se necesita tocar el código.</li>
+        <li>El email debe estar en la <strong>columna A</strong>, uno por fila, desde la <strong>fila 2</strong>.</li>
+        <li>Cada email debe incluir el símbolo <code class="code-val">@</code>.</li>
+      </ul>`
+  },
+  {
+    id: "error-proyecto-no-aparece",
+    keywords: ["no aparece","proyecto no aparece","falta","no se ve","no muestra","no encuentro"],
+    title: "¿Por qué no aparece un proyecto?",
+    render: () => `
+      <div class="answer-tag">04 · Proyecto no aparece</div>
+      <p><strong>Causas más comunes:</strong></p>
+      <ul>
+        <li>La columna <span class="col-badge">B</span> (código JOB) está vacía — el script omite filas sin código.</li>
+        <li>La columna <span class="col-badge">M</span> no dice exactamente <code class="code-val">en proceso</code> — verificar mayúsculas y espacios.</li>
+        <li>El status dice <code class="code-val">cancelado</code> — los cancelados no aparecen en ninguna vista.</li>
+      </ul>
+      <div class="info-box">✅ <strong>Solución:</strong> corregir los datos en el Sheet y generar el dashboard nuevamente.</div>`
+  },
+  {
+    id: "error-menu",
+    keywords: ["menú no aparece","menu no aparece","no veo el menú","dashboard no aparece","extensiones","recargar","f5"],
+    title: "El menú Dashboard no aparece",
+    render: () => `
+      <div class="answer-tag">04 · Menú no aparece</div>
+      <p><strong>Solución:</strong> recargar la página con <code class="code-val">F5</code> o <code class="code-val">Ctrl+R</code>.</p>
+      <p>El menú se crea automáticamente al abrir el archivo. Si persiste, cerrar y volver a abrir el archivo.</p>`
+  },
+  {
+    id: "error-categoria-incorrecta",
+    keywords: ["categoría incorrecta","categoria incorrecta","otros","sección incorrecta","aparece en otros"],
+    title: "El proyecto aparece en la categoría incorrecta",
+    render: () => `
+      <div class="answer-tag">04 · Categoría incorrecta</div>
+      <p><strong>Causa:</strong> el valor en columna <span class="col-badge">O</span> no coincide exactamente con los valores válidos.</p>
+      <p><strong>Solución:</strong> usar exactamente una de estas opciones (mayúsculas incluidas):</p>
+      <p style="margin-top:8px;">
+        <span class="status-chip chip-purple">AUTOMATION</span>
+        <span class="status-chip chip-teal">MECHANIZATION</span>
+        <span class="status-chip chip-emerald">WAREHOUSE SYSTEM</span>
+        <span class="status-chip chip-purple">ROBOTICS</span>
+        <span class="status-chip chip-amber">FORKLIFT</span>
+        <span class="status-chip chip-amber">MHE MAINTENANCE</span>
+      </p>`
+  },
+  {
+    id: "error-emails",
+    keywords: ["no se encontraron emails","error al enviar","lista vacía","sin emails","sin destinatarios"],
+    title: "Error: No se encontraron emails",
+    render: () => `
+      <div class="answer-tag">04 · Error — sin emails</div>
+      <p><strong>Causa:</strong> el Sheet de emails está vacío o los emails no están en la columna A desde la fila 2.</p>
+      <p><strong>Solución:</strong> verificar que haya al menos un email válido en columna A (desde fila 2), con el símbolo <code class="code-val">@</code>.</p>`
+  },
+  {
+    id: "error-proveedores",
+    keywords: ["proveedores","proveedor","separar","pipe","barra","no aparecen correctamente","cómo separo","ak"],
+    title: "¿Cómo separar múltiples proveedores?",
+    render: () => `
+      <div class="answer-tag">02 · Columna AK — Proveedores</div>
+      <p>Usar el símbolo <code class="code-val">|</code> (pipe) para separar múltiples proveedores en la columna <span class="col-badge">AK</span>.</p>
+      <div class="info-box" style="font-family:monospace;">Proveedor A | Proveedor B | Proveedor C</div>
+      <div class="warn-box">⚠️ No usar coma <code class="code-val">,</code> ni punto y coma <code class="code-val">;</code> — solo el pipe <code class="code-val">|</code>.</div>`
+  },
+  {
+    id: "error-autorizacion",
+    keywords: ["autorización","autorizacion","permisos","permite","primera vez","revisar permisos","permitir"],
+    title: "El script pide autorización",
+    render: () => `
+      <div class="answer-tag">04 · Autorización</div>
+      <p><strong>Es normal.</strong> La primera vez que se ejecuta el script, Google Sheets pide autorizar los permisos.</p>
+      <ol>
+        <li>Hacer clic en <strong>"Revisar permisos"</strong>.</li>
+        <li>Seleccionar la <strong>cuenta de MercadoLibre</strong>.</li>
+        <li>Hacer clic en <strong>"Permitir"</strong>.</li>
+      </ol>
+      <p>Solo sucede una vez por cuenta.</p>`
+  },
+  {
+    id: "vista-previa",
+    keywords: ["vista previa","preview","sin enviar","revisar antes","previsualizar"],
+    title: "Vista previa del dashboard",
+    render: () => `
+      <div class="answer-tag">03 · Vista previa</div>
+      <p>El menú <strong>📊 Dashboard</strong> tiene la opción <em>"Vista previa (sin enviar)"</em>.</p>
+      <ul>
+        <li>Abre el dashboard en una ventana dentro de Sheets.</li>
+        <li>Permite revisar el contenido <strong>antes de enviar el email</strong>.</li>
+        <li>Recomendado usarla antes de cada envío.</li>
+      </ul>`
+  },
+  {
+    id: "cancelado",
+    keywords: ["cancelado","qué pasa cancelado","no aparece cancelado","excluido"],
+    title: "¿Qué pasa con los proyectos cancelados?",
+    render: () => `
+      <div class="answer-tag">02 · Status cancelado</div>
+      <p>Los proyectos con status <span class="status-chip chip-red">cancelado</span> <strong>no aparecen en ninguna vista del dashboard</strong> — ni en la principal ni en Concluidos.</p>
+      <p>Se excluyen automáticamente al generar el dashboard.</p>`
+  },
+  {
+    id: "cheatsheet",
+    keywords: ["cheat sheet","cheatsheet","resumen","referencia rápida","guía rápida","todo junto","resumen general","día a día"],
+    title: "Cheat sheet — referencia rápida",
+    render: () => `
+      <div class="answer-tag">Referencia rápida</div>
+      <p><strong>Status válidos (col. M):</strong></p>
+      <p><span class="status-chip chip-blue">en proceso</span> <span class="status-chip chip-green">concluido</span> <span class="status-chip chip-red">cancelado</span></p>
+      <p style="margin-top:12px;"><strong>Categorías válidas (col. O):</strong></p>
+      <p>
+        <span class="status-chip chip-purple">AUTOMATION</span>
+        <span class="status-chip chip-teal">MECHANIZATION</span>
+        <span class="status-chip chip-emerald">WAREHOUSE SYSTEM</span>
+        <span class="status-chip chip-purple">ROBOTICS</span>
+        <span class="status-chip chip-amber">FORKLIFT</span>
+        <span class="status-chip chip-amber">MHE MAINTENANCE</span>
+      </p>
+      <p style="margin-top:12px;"><strong>Columnas obligatorias:</strong> <span class="col-badge">B</span> JOB &nbsp; <span class="col-badge">M</span> Status &nbsp; <span class="col-badge">O</span> Categoría</p>
+      <p style="margin-top:12px;"><strong>Menú 📊 Dashboard:</strong></p>
+      <ul>
+        <li>→ <strong>Generar y enviar Dashboard</strong> — envía a todos</li>
+        <li>→ <strong>Vista previa (sin enviar)</strong> — revisar antes</li>
+        <li>Si no aparece: recargar con F5</li>
+      </ul>
+      <p style="margin-top:10px;"><strong>Proveedores múltiples (col. AK):</strong> separar con <code class="code-val">|</code></p>
+      <p style="margin-top:6px;"><strong>Destinatarios:</strong> Sheet de emails → columna A, desde fila 2.</p>`
+  }
+];
+
+// ─────────────────────────────────────────────────────────────
+//  MOTOR DE BÚSQUEDA
+// ─────────────────────────────────────────────────────────────
+function normalize(str) {
+  return str.toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/[¿?¡!]/g, "");
+}
+
+function search(query) {
+  const q = normalize(query);
+  const words = q.split(/\s+/).filter(w => w.length > 2);
+  let scored = KB.map(item => {
+    let score = 0;
+    const kws = item.keywords.map(normalize);
+    kws.forEach(kw => { if (q.includes(kw)) score += kw.split(" ").length * 3; });
+    words.forEach(word => { kws.forEach(kw => { if (kw.includes(word)) score += 1; }); });
+    return { item, score };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  const best = scored.filter(s => s.score > 0);
+  if (!best.length) return [];
+  const threshold = best[0].score * 0.4;
+  return best.filter(s => s.score >= threshold).slice(0, 2).map(s => s.item);
+}
+
+// ─────────────────────────────────────────────────────────────
+//  UI
+// ─────────────────────────────────────────────────────────────
+function showHome() {
+  document.getElementById("home").style.display = "block";
+  document.getElementById("results").style.display = "none";
+  document.getElementById("input").value = "";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showResults(query, items) {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("results").style.display = "block";
+  document.getElementById("query-text").textContent = query;
+  const container = document.getElementById("answers");
+
+  if (!items.length) {
+    container.innerHTML = `
+      <div class="no-result-card">
+        <p>No se encontró esa información en el manual.<br>Intenta con otros términos o explora las secciones de arriba.</p>
+        <div class="chips" style="justify-content:center;margin-top:0;">
+          <div class="chip" onclick="ask('Status válidos columna M')" style="background:#f0f0f0;color:#333;border-color:#ddd;">Status válidos</div>
+          <div class="chip" onclick="ask('Categorías válidas')" style="background:#f0f0f0;color:#333;border-color:#ddd;">Categorías</div>
+          <div class="chip" onclick="ask('Pasos para generar y enviar')" style="background:#f0f0f0;color:#333;border-color:#ddd;">Cómo enviar</div>
+          <div class="chip" onclick="ask('Errores frecuentes')" style="background:#f0f0f0;color:#333;border-color:#ddd;">Errores</div>
+        </div>
+      </div>`;
+  } else {
+    container.innerHTML = items.map(item =>
+      `<div class="answer-card">${item.render()}</div>`
+    ).join("");
+  }
+
+  document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function ask(question) {
+  document.getElementById("input").value = question;
+  send();
+}
+
+function send() {
+  const input = document.getElementById("input");
+  const query = input.value.trim();
+  if (!query) return;
+  const results = search(query);
+  showResults(query, results);
+}
+
+document.getElementById("input").focus();
+</script>
+</body>
+</html>
